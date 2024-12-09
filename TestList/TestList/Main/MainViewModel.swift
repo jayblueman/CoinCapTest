@@ -18,10 +18,9 @@ class MainViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published private(set) var filteredAssets: [Asset] = []
 
-    @Published var errorText: String = "hiba van bro"
+    @Published var errorText: String = ""
 
     private var cancellables = Set<AnyCancellable>()
-
     init() {
         Publishers.CombineLatest($searchText, $assets)
             .map { searchText, assets in
@@ -92,8 +91,6 @@ class MainViewModel: ObservableObject {
 
             }, receiveValue: { [weak self] (marketResponse: MarketResponse) in
                 self?.markets = marketResponse.data
-                print(marketResponse.data[2])
-                print(marketResponse.data)
             })
             .store(in: &cancellables)
     }

@@ -12,7 +12,6 @@ struct AssetRowView: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            // Icon or Image
             if let imageURL = URL(string: AssetURLProvider.icon(asset.symbol).urlString) {
                 AsyncImage(url: imageURL) { image in
                     image
@@ -41,7 +40,7 @@ struct AssetRowView: View {
 
             Spacer()
 
-            VStack(alignment: .trailing, spacing: 4) {
+            VStack(alignment: .trailing, spacing: 0) {
                 Text(asset.formattedPrice)
                     .font(Font.system(size: 17, weight: .bold))
                 HStack(spacing: 4) {
@@ -60,6 +59,19 @@ struct AssetRowView: View {
                         )
                         .foregroundColor(.white)
                 }
+            }
+
+            Rectangle()
+                .fill(Color(.systemGray4))
+                .frame(width: 1, height: 70)
+
+            Button(action: {
+                // Button action here
+                print("\(asset.name) button tapped")
+            }) {
+                Image("IconDownArrow")
+                    .resizable()
+                    .frame(width: 14, height: 22)
             }
         }
         .frame(height: 74)

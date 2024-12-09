@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct TestListApp: App {
+
+    let viewModel = MainViewModel()
+
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(viewModel: viewModel)
                 .onAppear {
                     configureNavigationBarAppearance()
                 }

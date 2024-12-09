@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
 
-    @StateObject private var viewModel = MainViewModel()
+    @StateObject var viewModel: MainViewModel
 
     var body: some View {
         NavigationView {
@@ -39,6 +39,7 @@ struct MainView: View {
                         .padding()
                     }
                     .background(Color(.secondarySystemBackground))
+                    .scrollDismissesKeyboard(.immediately)
                 }
 
             }
@@ -53,5 +54,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    MainView(viewModel: MainViewModel())
 }
